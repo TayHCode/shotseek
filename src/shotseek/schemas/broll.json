@@ -1,0 +1,677 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "shotseek"
+      ]
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string",
+      "enum": [
+        "broll"
+      ]
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "aroll",
+            "transcript",
+            "points",
+            "beats"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "duration": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "whisper_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcript_cached": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "content_sample": {
+          "type": "string"
+        },
+        "excluded_file_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "path",
+        "duration",
+        "language",
+        "whisper_model",
+        "transcript_cached"
+      ],
+      "additionalProperties": false
+    },
+    "transcript": {
+      "type": "object",
+      "properties": {
+        "timed": {
+          "type": "boolean"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "start": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "end": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "start",
+              "end",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "timed",
+        "segments"
+      ],
+      "additionalProperties": false
+    },
+    "beats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "start": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "end": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "timecode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "segment_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "queries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string",
+                  "enum": [
+                    "sentence",
+                    "keywords",
+                    "point",
+                    "agent",
+                    "topic"
+                  ]
+                }
+              },
+              "required": [
+                "text",
+                "source"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "skipped": {
+            "type": "boolean"
+          },
+          "skip_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "score_stats": {
+            "type": "object",
+            "properties": {
+              "mean": {
+                "type": "number"
+              },
+              "std": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "candidates": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "mean",
+              "std",
+              "max",
+              "candidates"
+            ],
+            "additionalProperties": false
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rank": {
+                  "type": "integer"
+                },
+                "item_id": {
+                  "type": "string"
+                },
+                "file_id": {
+                  "type": "string"
+                },
+                "media_type": {
+                  "type": "string",
+                  "enum": [
+                    "photo",
+                    "video"
+                  ]
+                },
+                "score": {
+                  "type": "number"
+                },
+                "relevance": {
+                  "type": "number"
+                },
+                "library": {
+                  "type": "string"
+                },
+                "relative_path": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "open_path": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "orientation": {
+                  "type": "string",
+                  "enum": [
+                    "landscape",
+                    "portrait",
+                    "square"
+                  ]
+                },
+                "duration": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "size_bytes": {
+                  "type": "integer"
+                },
+                "captured_at": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "modified_at": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "start": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "end": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "timecode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "matched_frames": {
+                  "type": "integer"
+                },
+                "thumbnail": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "quality": {
+                  "type": "object",
+                  "properties": {
+                    "brightness": {
+                      "type": "number"
+                    },
+                    "sharpness": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "brightness",
+                    "sharpness"
+                  ],
+                  "additionalProperties": false
+                },
+                "near_duplicates": {
+                  "type": "integer"
+                },
+                "matched_query": {
+                  "type": "string"
+                },
+                "recommended": {
+                  "type": "boolean"
+                },
+                "repeat": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "rank",
+                "item_id",
+                "file_id",
+                "media_type",
+                "score",
+                "relevance",
+                "library",
+                "relative_path",
+                "path",
+                "open_path",
+                "filename",
+                "width",
+                "height",
+                "orientation",
+                "duration",
+                "size_bytes",
+                "captured_at",
+                "modified_at",
+                "timestamp",
+                "start",
+                "end",
+                "timecode",
+                "matched_frames",
+                "thumbnail",
+                "quality",
+                "near_duplicates",
+                "matched_query",
+                "recommended",
+                "repeat"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "need_score": {
+            "type": "number"
+          },
+          "need_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "topic": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "suggested_broll": {
+            "type": "string"
+          },
+          "search_terms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "placement": {
+            "type": "object",
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "start": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "end": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "start",
+          "end",
+          "timecode",
+          "text",
+          "segment_ids",
+          "keywords",
+          "queries",
+          "skipped",
+          "skip_reason",
+          "score_stats",
+          "candidates",
+          "need_score",
+          "need_reasons",
+          "topic",
+          "suggested_broll",
+          "search_terms",
+          "placement"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "index": {
+      "type": "object",
+      "properties": {
+        "dir": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "files": {
+          "type": "integer"
+        },
+        "vectors": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "indexing"
+          ]
+        }
+      },
+      "required": [
+        "dir",
+        "model",
+        "files",
+        "vectors",
+        "state"
+      ],
+      "additionalProperties": false
+    },
+    "filters": {
+      "type": "object",
+      "properties": {
+        "media": {
+          "type": "string",
+          "enum": [
+            "photo",
+            "video",
+            "any"
+          ]
+        },
+        "library": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "under": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "path_contains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "orientation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "min_width": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "min_height": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "min_megapixels": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min_duration": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_duration": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exclude_id": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "include_blank": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "media",
+        "library",
+        "under",
+        "path_contains",
+        "orientation",
+        "min_width",
+        "min_height",
+        "min_megapixels",
+        "min_duration",
+        "max_duration",
+        "after",
+        "before",
+        "exclude_id",
+        "include_blank"
+      ],
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "hint",
+        "exit_code"
+      ],
+      "additionalProperties": false
+    },
+    "revision": {
+      "type": "string",
+      "description": "Local content-addressed revision for selective reuse and transcript edit reconciliation."
+    }
+  },
+  "required": [
+    "schema_version",
+    "tool",
+    "tool_version",
+    "command",
+    "ok",
+    "warnings",
+    "source",
+    "transcript",
+    "beats",
+    "index",
+    "filters"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "shotseek"
+      ]
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string",
+      "enum": [
+        "show"
+      ]
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "type": "string"
+        },
+        "library": {
+          "type": "string"
+        },
+        "relative_path": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "open_path": {
+          "type": "string"
+        },
+        "media_type": {
+          "type": "string"
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "orientation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "duration": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "captured_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "size_bytes": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_id",
+        "library",
+        "relative_path",
+        "path",
+        "open_path",
+        "media_type",
+        "width",
+        "height",
+        "orientation",
+        "duration",
+        "captured_at",
+        "size_bytes",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "timecode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "thumbnail": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quality": {
+            "type": "object",
+            "properties": {
+              "brightness": {
+                "type": "number"
+              },
+              "sharpness": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "brightness",
+              "sharpness"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "item_id",
+          "timestamp",
+          "timecode",
+          "thumbnail",
+          "quality"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "hint",
+        "exit_code"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "tool",
+    "tool_version",
+    "command",
+    "ok",
+    "warnings",
+    "file",
+    "frames"
+  ],
+  "additionalProperties": false
+}

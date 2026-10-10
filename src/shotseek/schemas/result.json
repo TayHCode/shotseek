@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "rank": {
+      "type": "integer"
+    },
+    "item_id": {
+      "type": "string"
+    },
+    "file_id": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "photo",
+        "video"
+      ]
+    },
+    "score": {
+      "type": "number"
+    },
+    "relevance": {
+      "type": "number"
+    },
+    "library": {
+      "type": "string"
+    },
+    "relative_path": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "open_path": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "landscape",
+        "portrait",
+        "square"
+      ]
+    },
+    "duration": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "size_bytes": {
+      "type": "integer"
+    },
+    "captured_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modified_at": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "start": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "end": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "timecode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "matched_frames": {
+      "type": "integer"
+    },
+    "thumbnail": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "brightness": {
+          "type": "number"
+        },
+        "sharpness": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "brightness",
+        "sharpness"
+      ],
+      "additionalProperties": false
+    },
+    "near_duplicates": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "rank",
+    "item_id",
+    "file_id",
+    "media_type",
+    "score",
+    "relevance",
+    "library",
+    "relative_path",
+    "path",
+    "open_path",
+    "filename",
+    "width",
+    "height",
+    "orientation",
+    "duration",
+    "size_bytes",
+    "captured_at",
+    "modified_at",
+    "timestamp",
+    "start",
+    "end",
+    "timecode",
+    "matched_frames",
+    "thumbnail",
+    "quality",
+    "near_duplicates"
+  ],
+  "additionalProperties": false
+}

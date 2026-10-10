@@ -1,0 +1,686 @@
+{
+  "exclude": [],
+  "approvals": [
+    {
+      "kind": "internal-host",
+      "path": "THIRD-PARTY.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "THIRD-PARTY.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "README.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "README.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_real_models.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_real_models.py",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "tests/legacy_stubs.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "tree",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_candidate_refill.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_reference_embedding.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_raw_frames.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "tests/test_raw_frames.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "tree",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_frame_readers.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "tree",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_no_network.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "tree",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_repo_hygiene.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "tree",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_repo_hygiene.py",
+      "fingerprint": "19e36255972107d4",
+      "scope": "tree",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv6",
+      "path": "src/shotseek/search.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "tree",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/config.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/doctor.py",
+      "fingerprint": "5a35024e1773866f",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/embed/openclip.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "tree",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "email",
+      "path": "@refs",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/e1108bca25c9",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "README.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "README.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "THIRD-PARTY.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "THIRD-PARTY.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/config.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/doctor.py",
+      "fingerprint": "5a35024e1773866f",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/embed/openclip.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "src/shotseek/search.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "ipv6",
+      "path": "tests/legacy_stubs.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_candidate_refill.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_frame_readers.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_no_network.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_raw_frames.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "tests/test_raw_frames.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_repo_hygiene.py",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "tests/test_repo_hygiene.py",
+      "fingerprint": "19e36255972107d4",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_real_models.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_real_models.py",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "tests/test_slow_reference_embedding.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/6c9cabd84bfa",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "factory-records-videoeditor/evidence/build-plan.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "factory-records-videoeditor/evidence/build-plan.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv4",
+      "path": "factory-records-videoeditor/evidence/build-plan.md",
+      "fingerprint": "12ca17b49af22894",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "ipv4",
+      "path": "factory-records-videoeditor/evidence/build-plan.md",
+      "fingerprint": "19e36255972107d4",
+      "scope": "history",
+      "reason": "Public loopback or wildcard bind literal used by hermetic local tests."
+    },
+    {
+      "kind": "email",
+      "path": "factory-records-videoeditor/evidence/build-plan.md",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "history",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "factory-records-videoeditor/evidence/build-report.md",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "history",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "factory-records-videoeditor/evidence/build-report.md",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "factory-records-videoeditor/evidence/build-report.md",
+      "fingerprint": "15f0a6414a414287",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "email",
+      "path": "factory-records-videoeditor/evidence/port-plan.md",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "history",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/95d4da415969",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/a5bdcb9e6870",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/414ad95dbdcf",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/7726245fac05",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/5a5c7f86b85d",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/d74b0cf21ce7",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/14071456f912",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/738476e2a745",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/74240ad5bb05",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/broll.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "src/shotseek/broll.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/dd4d7b289117",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/search.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/84044826c4df",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/shotseek/indexer.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/6390d9b597b9",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/9e83de8b43e1",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/clip_match.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/index_broll_library.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/main.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/match_broll_library.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "src/match_broll_library.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "internal-host",
+      "path": "src/search_broll_library.py",
+      "fingerprint": "ec8e4cd96d671dd2",
+      "scope": "history",
+      "reason": "OpenCLIP model-name string (ViT architecture or pretrained tag), not a host name."
+    },
+    {
+      "kind": "ipv6",
+      "path": "src/search_broll_library.py",
+      "fingerprint": "71546855d6279ef7",
+      "scope": "history",
+      "reason": "Python reversed-slice syntax, not an IPv6 address."
+    },
+    {
+      "kind": "email",
+      "path": "@commit/8bd0c3f83114",
+      "fingerprint": "cd29c5ac348a026a",
+      "scope": "metadata",
+      "reason": "Exact public coauthor trailer address on commits and quoted in old evidence notes."
+    }
+  ],
+  "quickstart": [
+    {
+      "file": "README.md",
+      "line": 138,
+      "argv": [
+        "python",
+        "-m",
+        "pip",
+        "install",
+        "torch>=2.2",
+        "torchvision>=0.17",
+        "--index-url",
+        "https://download.pytorch.org/whl/cpu"
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 139,
+      "argv": [
+        "python",
+        "-m",
+        "pip",
+        "install",
+        "."
+      ]
+    },
+    {
+      "file": "README.md",
+      "line": 148,
+      "argv": [
+        "shotseek",
+        "doctor"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "role": "tests",
+      "file": "CONTRIBUTING.md",
+      "line": 12,
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-t",
+        ".",
+        "-q"
+      ]
+    },
+    {
+      "role": "lint",
+      "file": "CONTRIBUTING.md",
+      "line": 23,
+      "argv": [
+        "python",
+        "-m",
+        "pip",
+        "install",
+        "ruff"
+      ]
+    },
+    {
+      "role": "lint",
+      "file": "CONTRIBUTING.md",
+      "line": 24,
+      "argv": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ]
+    }
+  ],
+  "dependency_licenses": {
+    "pillow": {
+      "version": "12.3.0",
+      "spdx": "MIT-CMU",
+      "sha256": "dda12a98c1979cf3d94df1cff45d27a4cb3f04a60c76f76902ac54cac03ec0ce"
+    },
+    "ctranslate2": {
+      "version": "4.8.2",
+      "owner_disposition": {
+        "spdx": "MIT",
+        "source_url": "https://github.com/OpenNMT/CTranslate2/blob/master/LICENSE",
+        "reviewed": true,
+        "note": "Owner-approved upstream license disposition for this installed version; installed distribution metadata contains no license file."
+      }
+    },
+    "protobuf": {
+      "version": "7.36.2",
+      "spdx": "BSD-3-Clause",
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d"
+    },
+    "regex": {
+      "version": "2026.9.29",
+      "spdx": "Apache-2.0 AND CNRI-Python",
+      "sha256": "bff55ef4cdcc8c14ce259f8e8ab60e264418440d6335f4dc138273fbd506144d"
+    },
+    "tqdm": {
+      "version": "4.70.1",
+      "spdx": "MPL-2.0 AND MIT",
+      "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de"
+    },
+    "flatbuffers": {
+      "version": "25.12.19",
+      "owner_disposition": {
+        "spdx": "Apache-2.0",
+        "source_url": "https://github.com/google/flatbuffers/blob/master/LICENSE",
+        "reviewed": true,
+        "note": "Owner-approved upstream license disposition for this installed version; installed distribution metadata contains no license file."
+      }
+    },
+    "tokenizers": {
+      "version": "0.23.3",
+      "owner_disposition": {
+        "spdx": "Apache-2.0",
+        "source_url": "https://github.com/huggingface/tokenizers/blob/main/LICENSE",
+        "reviewed": true,
+        "note": "Owner-approved upstream license disposition for this installed version; installed distribution metadata contains no license file."
+      }
+    },
+    "torch": {
+      "version": "2.14.1+cpu",
+      "spdx": "Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT",
+      "sha256": "bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43"
+    },
+    "mpmath": {
+      "version": "1.3.0",
+      "spdx": "BSD-3-Clause",
+      "sha256": "c26cae81da4508e5e249985777a33821f183223ebb74d7f8cfbf90fe7eef2fb7"
+    },
+    "torchvision": {
+      "version": "0.29.1+cpu",
+      "spdx": "BSD-3-Clause",
+      "sha256": "6502f676851cfe25f8af75531dfb32375b7325b73c37e7b43741fa422893e71d"
+    },
+    "numpy": {
+      "version": "2.5.2",
+      "spdx": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "sha256": "4860083caa0de2ac3292ca98bd074bd8f45d8b32624e37b1e70a240bff61e488"
+    },
+    "jinja2": {
+      "version": "3.1.6",
+      "spdx": "BSD-3-Clause",
+      "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b"
+    },
+    "sympy": {
+      "version": "1.14.0",
+      "spdx": "BSD-3-Clause",
+      "sha256": "07a5e9819f727b4986ad2829c7a29a6320d42575f720eb24d71b7fef573a0286"
+    }
+  }
+}

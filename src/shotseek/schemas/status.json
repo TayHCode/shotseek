@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "shotseek"
+      ]
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string",
+      "enum": [
+        "status"
+      ]
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "index": {
+      "type": "object",
+      "properties": {
+        "dir": {
+          "type": "string"
+        },
+        "exists": {
+          "type": "boolean"
+        },
+        "searchable": {
+          "type": "boolean"
+        },
+        "format_version": {
+          "type": "integer"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dim": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "vectors": {
+          "type": "integer"
+        },
+        "dead_vectors": {
+          "type": "integer"
+        },
+        "size_bytes": {
+          "type": "integer"
+        },
+        "thumbnails": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dir",
+        "exists",
+        "searchable",
+        "format_version",
+        "model",
+        "dim",
+        "vectors",
+        "dead_vectors",
+        "size_bytes",
+        "thumbnails"
+      ],
+      "additionalProperties": false
+    },
+    "run": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "started_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "discovered": {
+          "type": "integer"
+        },
+        "processed": {
+          "type": "integer"
+        },
+        "indexed": {
+          "type": "integer"
+        },
+        "failed": {
+          "type": "integer"
+        },
+        "walk_complete": {
+          "type": "integer"
+        },
+        "files_per_minute": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "active"
+      ],
+      "additionalProperties": false
+    },
+    "last_run": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "started_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "finished_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "stop_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "device": {
+          "type": "string"
+        },
+        "discovered": {
+          "type": "integer"
+        },
+        "processed": {
+          "type": "integer"
+        },
+        "indexed": {
+          "type": "integer"
+        },
+        "failed": {
+          "type": "integer"
+        },
+        "unchanged": {
+          "type": "integer"
+        },
+        "removed": {
+          "type": "integer"
+        },
+        "vectors_added": {
+          "type": "integer"
+        },
+        "walk_complete": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "started_at",
+        "updated_at",
+        "finished_at",
+        "status",
+        "stop_reason",
+        "device",
+        "discovered",
+        "processed",
+        "indexed",
+        "failed",
+        "unchanged",
+        "removed",
+        "vectors_added",
+        "walk_complete"
+      ],
+      "additionalProperties": false
+    },
+    "libraries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "root": {
+            "type": "string"
+          },
+          "reachable": {
+            "type": "boolean"
+          },
+          "files": {
+            "type": "object",
+            "properties": {
+              "indexed": {
+                "type": "integer"
+              },
+              "photos": {
+                "type": "integer"
+              },
+              "videos": {
+                "type": "integer"
+              },
+              "failed": {
+                "type": "integer"
+              },
+              "unsupported": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "indexed",
+              "photos",
+              "videos",
+              "failed",
+              "unsupported"
+            ],
+            "additionalProperties": false
+          },
+          "vectors": {
+            "type": "integer"
+          },
+          "failures_by_reason": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "root",
+          "reachable",
+          "files",
+          "vectors",
+          "failures_by_reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "hint",
+        "exit_code"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "tool",
+    "tool_version",
+    "command",
+    "ok",
+    "warnings",
+    "config",
+    "index",
+    "run",
+    "last_run",
+    "libraries"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "tool": "shotseek",
+  "tool_version": "0.1.0",
+  "command": "search",
+  "ok": true,
+  "warnings": [
+    {
+      "code": "fake_embedder",
+      "message": "This index uses the deterministic test embedder."
+    }
+  ],
+  "index": {
+    "dir": "/path/outside/library/index",
+    "model": "fake/color-v1",
+    "files": 4,
+    "vectors": 5,
+    "state": "complete"
+  },
+  "filters": {
+    "media": "any",
+    "library": [],
+    "under": [],
+    "path_contains": [],
+    "orientation": null,
+    "min_width": null,
+    "min_height": null,
+    "min_megapixels": null,
+    "min_duration": null,
+    "max_duration": null,
+    "after": null,
+    "before": null,
+    "exclude_id": [],
+    "include_blank": false
+  },
+  "queries": [
+    {
+      "id": "red_coffee_mug",
+      "kind": "text",
+      "text": "red coffee mug",
+      "score_stats": {
+        "mean": 0.3771,
+        "std": 0.4619,
+        "max": 0.9428,
+        "candidates": 5
+      },
+      "returned": 2,
+      "results": [
+        {
+          "rank": 1,
+          "item_id": "da0490828522718d",
+          "file_id": "da0490828522718d",
+          "media_type": "photo",
+          "score": 0.9428,
+          "relevance": 1.22,
+          "library": "media",
+          "relative_path": "cafe/coffee.jpg",
+          "path": "/path/to/media/cafe/coffee.jpg",
+          "open_path": "/path/to/media/cafe/coffee.jpg",
+          "filename": "coffee.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.959494+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/da/da0490828522718d.jpg",
+          "quality": {
+            "brightness": 0.298,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 1
+        },
+        {
+          "rank": 2,
+          "item_id": "383ff0f3ec5a7e87",
+          "file_id": "383ff0f3ec5a7e87",
+          "media_type": "photo",
+          "score": 0.0,
+          "relevance": -0.82,
+          "library": "media",
+          "relative_path": "hiking/boots.jpg",
+          "path": "/path/to/media/hiking/boots.jpg",
+          "open_path": "/path/to/media/hiking/boots.jpg",
+          "filename": "boots.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.961611+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/38/383ff0f3ec5a7e87.jpg",
+          "quality": {
+            "brightness": 0.1137,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 0
+        }
+      ]
+    }
+  ]
+}

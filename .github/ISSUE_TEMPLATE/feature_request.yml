@@ -1,0 +1,14 @@
+name: Feature request
+description: Describe a media-search workflow that needs support.
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow and expected result
+      description: Use neutral examples and no private media or index contents.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Current workaround

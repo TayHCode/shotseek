@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "tool": "shotseek",
+  "tool_version": "0.1.0",
+  "command": "broll",
+  "ok": true,
+  "warnings": [
+    {
+      "code": "fake_embedder",
+      "message": "This index uses the deterministic test embedder."
+    }
+  ],
+  "revision": "57f0480884419543cf53ec591f8fee48485b5abf5622e5b9036c2bbf2e677740",
+  "source": {
+    "kind": "points",
+    "path": null,
+    "duration": null,
+    "language": null,
+    "whisper_model": null,
+    "transcript_cached": false
+  },
+  "transcript": {
+    "timed": false,
+    "segments": []
+  },
+  "beats": [
+    {
+      "id": "cafe-beat",
+      "start": null,
+      "end": null,
+      "timecode": null,
+      "text": "red coffee at the cafe counter",
+      "segment_ids": [],
+      "keywords": [
+        "cafe",
+        "coffee",
+        "counter"
+      ],
+      "queries": [
+        {
+          "text": "red coffee at the cafe counter",
+          "source": "point"
+        }
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "need_score": 0.4,
+      "need_reasons": [
+        "Transcript contains visualizable subject matter."
+      ],
+      "topic": null,
+      "suggested_broll": "Relevant cutaway footage that shows or supports: cafe, coffee, counter. Use a stable 3-6 second shot with a clear subject.",
+      "search_terms": [
+        "cafe",
+        "coffee",
+        "counter"
+      ],
+      "placement": {
+        "start": null,
+        "end": null
+      },
+      "candidates": [
+        {
+          "rank": 1,
+          "item_id": "da0490828522718d",
+          "file_id": "da0490828522718d",
+          "media_type": "photo",
+          "score": 0.7698,
+          "relevance": 1.22,
+          "library": "media",
+          "relative_path": "cafe/coffee.jpg",
+          "path": "/path/to/media/cafe/coffee.jpg",
+          "open_path": "/path/to/media/cafe/coffee.jpg",
+          "filename": "coffee.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.959494+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/da/da0490828522718d.jpg",
+          "quality": {
+            "brightness": 0.298,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 1,
+          "matched_query": "red coffee at the cafe counter",
+          "recommended": true,
+          "repeat": false
+        },
+        {
+          "rank": 2,
+          "item_id": "383ff0f3ec5a7e87",
+          "file_id": "383ff0f3ec5a7e87",
+          "media_type": "photo",
+          "score": 0.0,
+          "relevance": -0.82,
+          "library": "media",
+          "relative_path": "hiking/boots.jpg",
+          "path": "/path/to/media/hiking/boots.jpg",
+          "open_path": "/path/to/media/hiking/boots.jpg",
+          "filename": "boots.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.961611+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/38/383ff0f3ec5a7e87.jpg",
+          "quality": {
+            "brightness": 0.1137,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 0,
+          "matched_query": "red coffee at the cafe counter",
+          "recommended": false,
+          "repeat": false
+        }
+      ],
+      "score_stats": {
+        "mean": 0.3079,
+        "std": 0.3771,
+        "max": 0.7698,
+        "candidates": 5
+      }
+    },
+    {
+      "id": "hiking-beat",
+      "start": null,
+      "end": null,
+      "timecode": null,
+      "text": "blue hiking boots on a trail",
+      "segment_ids": [],
+      "keywords": [
+        "blue",
+        "boots",
+        "hiking",
+        "trail"
+      ],
+      "queries": [
+        {
+          "text": "blue hiking boots on a trail",
+          "source": "point"
+        }
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "need_score": 0.45,
+      "need_reasons": [
+        "Transcript contains visualizable subject matter.",
+        "Placement helps keep visual rhythm across the edit."
+      ],
+      "topic": null,
+      "suggested_broll": "Relevant cutaway footage that shows or supports: blue, boots, hiking, trail. Use a stable 3-6 second shot with a clear subject.",
+      "search_terms": [
+        "blue",
+        "boots",
+        "hiking",
+        "trail"
+      ],
+      "placement": {
+        "start": null,
+        "end": null
+      },
+      "candidates": [
+        {
+          "rank": 1,
+          "item_id": "383ff0f3ec5a7e87",
+          "file_id": "383ff0f3ec5a7e87",
+          "media_type": "photo",
+          "score": 0.7428,
+          "relevance": 2.0,
+          "library": "media",
+          "relative_path": "hiking/boots.jpg",
+          "path": "/path/to/media/hiking/boots.jpg",
+          "open_path": "/path/to/media/hiking/boots.jpg",
+          "filename": "boots.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.961611+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/38/383ff0f3ec5a7e87.jpg",
+          "quality": {
+            "brightness": 0.1137,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 0,
+          "matched_query": "blue hiking boots on a trail",
+          "recommended": true,
+          "repeat": false
+        },
+        {
+          "rank": 2,
+          "item_id": "33bbaf436eef9d0c",
+          "file_id": "33bbaf436eef9d0c",
+          "media_type": "photo",
+          "score": 0.0058,
+          "relevance": -0.49,
+          "library": "media",
+          "relative_path": "product/mug.jpg",
+          "path": "/path/to/media/product/mug.jpg",
+          "open_path": "/path/to/media/product/mug.jpg",
+          "filename": "mug.jpg",
+          "width": 640,
+          "height": 480,
+          "orientation": "landscape",
+          "duration": null,
+          "size_bytes": 5453,
+          "captured_at": null,
+          "modified_at": "2026-10-09T00:43:22.962421+00:00",
+          "timestamp": null,
+          "start": null,
+          "end": null,
+          "timecode": null,
+          "matched_frames": 1,
+          "thumbnail": "/path/outside/library/index/thumbs/33/33bbaf436eef9d0c.jpg",
+          "quality": {
+            "brightness": 0.2941,
+            "sharpness": 0.0
+          },
+          "near_duplicates": 0,
+          "matched_query": "blue hiking boots on a trail",
+          "recommended": false,
+          "repeat": false
+        }
+      ],
+      "score_stats": {
+        "mean": 0.1497,
+        "std": 0.2965,
+        "max": 0.7428,
+        "candidates": 5
+      }
+    }
+  ],
+  "index": {
+    "dir": "/path/outside/library/index",
+    "model": "fake/color-v1",
+    "files": 4,
+    "vectors": 5,
+    "state": "complete"
+  },
+  "filters": {
+    "media": "any",
+    "library": [],
+    "under": [],
+    "path_contains": [],
+    "orientation": null,
+    "min_width": null,
+    "min_height": null,
+    "min_megapixels": null,
+    "min_duration": null,
+    "max_duration": null,
+    "after": null,
+    "before": null,
+    "exclude_id": [],
+    "include_blank": false
+  }
+}

@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible problem using generated or neutral inputs.
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach private media, index contents, transcripts, or personal paths.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps using generated or neutral inputs
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized shotseek doctor output
+      description: Remove private paths and library names before sharing.
