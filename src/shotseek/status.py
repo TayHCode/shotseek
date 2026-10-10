@@ -32,6 +32,8 @@ def inspect(args):
             recent = store.rows("SELECT * FROM runs ORDER BY id DESC LIMIT 1")
             last = recent[0] if recent else None
             output["last_run"] = dict(last) if last else None
+            if output["last_run"] is not None:
+                output["last_run"].setdefault("not_reached", 0)
             output["index"].update(model=info["model_id"], dim=info["dim"],
                 vectors=info["vector_rows"] - info["dead_rows"], dead_vectors=info["dead_rows"],
                 searchable=info["vector_rows"] > info["dead_rows"])
@@ -39,6 +41,7 @@ def inspect(args):
         if output["run"]["active"] and last:
             output["run"].update({field_name: last[field_name] for field_name in ("started_at", "updated_at",
                 "discovered", "processed", "indexed", "failed", "walk_complete")})
+            output["run"]["not_reached"] = last.get("not_reached", 0)
             elapsed = (datetime.now(timezone.utc) - datetime.fromisoformat(last["started_at"])).total_seconds()
             output["run"]["files_per_minute"] = round(last["processed"] * 60 / max(elapsed, .001), 2)
     if index.exists():

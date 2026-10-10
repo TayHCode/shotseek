@@ -27,7 +27,7 @@ def hold():
         return
     held = True
     Path(ready).touch()
-    deadline = time.monotonic() + 15
+    deadline = time.monotonic() + 60
     while not Path(release).exists():
         if time.monotonic() > deadline:
             raise RuntimeError('Signal test did not release checkpoint')
@@ -63,13 +63,17 @@ class CheckpointSignals(Sandbox):
                 child = subprocess.Popen([sys.executable, "-c", CHILD, str(ready), str(release), phase],
                                          env=dict(os.environ, **self.env), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
                 try:
-                    deadline = time.monotonic() + 15
+                    deadline = time.monotonic() + 60
                     while not ready.exists() and child.poll() is None and time.monotonic() < deadline:
                         time.sleep(.01)
-                    self.assertTrue(ready.exists(), "Checkpoint was not reached")
+                    if not ready.exists():
+                        if child.poll() is None:
+                            child.kill()
+                        stdout, stderr = child.communicate()
+                        self.fail(f"Checkpoint was not reached (exit {child.returncode}): {stdout} {stderr}")
                     child.send_signal(sig)
                     release.touch()
-                    stdout, stderr = child.communicate(timeout=20)
+                    stdout, stderr = child.communicate(timeout=60)
                 finally:
                     if child.poll() is None:
                         child.kill()

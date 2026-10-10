@@ -273,12 +273,15 @@ Same-size edits inside that tolerance can be missed. For unreliable timestamps,
 `change_detection = "size"` avoids timestamp-driven reindexing but also misses
 every same-size edit; use a deliberate rebuild when content may have changed.
 
-Transient filesystem errors during photo stat/read are recorded as `read_error`
+Transient filesystem errors during photo stat/read under a reachable root are
+recorded as `read_error`
 and retried automatically up to three failed attempts; `--retry-failed` allows
 an explicit retry afterward. Slow reads are bounded by per-file deadlines and
 reported as `timeout`; retry after the provider recovers. Decoder failures
 remain `decode_failed`. Default indexing retains partial results with exit 0; `--strict` returns 8 for failed
-files. Directory traversal errors return 4 and prevent pruning. Symlink files
+files. If the root becomes unavailable, discovered files not reached count
+separately as `not_reached`; reconnect and rerun normally without a retry flag.
+Directory traversal errors return 4 and prevent pruning. Symlink files
 and directories are skipped unless `follow_symlinks = true`; providers with
 zero inode numbers use resolved directory paths for traversal-cycle detection.
 Library-overlap and output-write checks also verify case aliases on mounted
@@ -314,3 +317,9 @@ application-level delays tested deadlines; packet-level throttling was not used.
 Wrong credentials and temporary account expiry rejected fresh SMB connections;
 password-policy expiry and saved-credential behavior remain unverified.
 No owner data was examined, and generated mount folders were removed after use.
+
+## Known issues
+
+A few timing-based tests may flake on a heavily loaded machine. One unexplained,
+one-off Python 3.12 test-step failure during release verification did not
+reproduce in two clean runs.

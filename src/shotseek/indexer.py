@@ -27,6 +27,7 @@ class Workers:
         self.results = queue.Queue()
         self.closed = threading.Event()
         self.settings, self.loader = settings, loader
+        self.unavailable_roots = set()
         for _ in range(count):
             self.spawn()
 
@@ -34,7 +35,7 @@ class Workers:
         def work():
             while not self.closed.is_set():
                 try:
-                    token, entry, force_reader = self.jobs.get(timeout=.1)
+                    token, library, entry, force_reader = self.jobs.get(timeout=.1)
                 except queue.Empty:
                     continue
                 if self.closed.is_set():
@@ -43,13 +44,20 @@ class Workers:
                 try:
                     settings = dict(self.settings,
                         frame_reader="ffmpeg") if force_reader else self.settings
-                    result, reason = self.loader(entry, settings), None
+                    if library["root"] in self.unavailable_roots:
+                        result, reason = None, "not_reached"
+                    else:
+                        result, reason = self.loader(entry, settings), None
                 except MediaError as exc:
                     result, reason = None, exc.reason
                 except OSError:
                     result, reason = None, "read_error"
                 except Exception:
                     result, reason = None, "decode_failed"
+                if reason in {"read_error", "probe_failed"} and not config.root_readable(library["root"],
+                        min(5, self.settings["file_timeout_seconds"])):
+                    self.unavailable_roots.add(library["root"])
+                    reason = "not_reached"
                 self.results.put(("done", token, (result, reason)))
         threading.Thread(target=work, daemon=True).start()
 
@@ -135,12 +143,12 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
             old = {(r["library"], r["relpath"]): r for r in store.files()}
             stats = {lib["name"]: dict(name=lib["name"], root=lib["root"], reachable=False,
                 walk_complete=False, discovered=0, new=0, changed=0, unchanged=0, indexed=0,
-                failed=0, unsupported=0, removed=0, prune_deferred=False) for lib in libraries}
+                failed=0, not_reached=0, unsupported=0, removed=0, prune_deferred=False) for lib in libraries}
             discovery = Discovery(libraries, settings, stop)
             pool = Workers(workers, settings, loader or load)
             inflight, pending, seen, failures = {}, [], [], []
             token = lost = consecutive_timeouts = 0
-            indexed = vectors_added = failed = processed = 0
+            indexed = vectors_added = failed = not_reached = processed = 0
             last_checkpoint = last_progress = last_activity = time.monotonic()
             status, reason, code = "complete", None, 0
             stopping_at = None
@@ -158,7 +166,7 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
 
             def progress():
                 return dict(discovered=sum(s["discovered"] for s in stats.values()),
-                    processed=processed, indexed=indexed, failed=failed,
+                    processed=processed, indexed=indexed, failed=failed, not_reached=not_reached,
                     unchanged=sum(s["unchanged"] for s in stats.values()),
                     removed=sum(s["removed"] for s in stats.values()), vectors_added=vectors_added,
                     walk_complete=int(status == "complete" and discovery.done.is_set() and all(s["walk_complete"] for s in discovery.states.values())))
@@ -184,12 +192,18 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
                 last_checkpoint = time.monotonic()
 
             def finish(job, result, fail_reason, persist=True):
-                nonlocal indexed, vectors_added, failed, processed, consecutive_timeouts
+                nonlocal indexed, vectors_added, failed, not_reached, processed, consecutive_timeouts
                 library, entry = job["library"], job["entry"]
                 stat = stats[library["name"]]
                 record = dict(library=library["name"], relpath=entry.relpath, kind=entry.kind,
                     ext=entry.ext, size=entry.size, mtime_ns=entry.mtime_ns,
                     status="failed" if fail_reason else "indexed", fail_reason=fail_reason)
+                if fail_reason == "not_reached":
+                    not_reached += 1
+                    stat["not_reached"] += 1
+                    discovery.states[library["name"]].update(reachable=False, walk_complete=False)
+                    # Keep an earlier searchable row and its retry count intact.
+                    return
                 if result:
                     record.update(result)
                     indexed += 1
@@ -270,7 +284,7 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
                         if entry.kind == "video":
                             journal.add(library["name"], entry)
                         force_reader = bool(previous and previous["fail_reason"] == "interrupted_decode")
-                        pool.jobs.put((token, entry, force_reader))
+                        pool.jobs.put((token, library, entry, force_reader))
                     while True:
                         try:
                             event, ident, value = pool.results.get_nowait()
@@ -360,6 +374,9 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
                             stat["removed"] = len(missing)
                 if args.strict and failed and not code:
                     code = 8
+                if not_reached:
+                    warnings.append(warning("files_not_reached", str(not_reached) +
+                        " files were not reached because the folder became unavailable; reconnect or check permissions and rerun indexing."))
                 if failed:
                     warnings.append(warning("files_failed", str(failed) +
                         " files could not be indexed; see failures_sample and retry with --retry-failed. Use --strict for a failing exit status."))
@@ -376,7 +393,7 @@ def run(args, data, index, embedder=None, loader=None, stop=None, drain_seconds=
                 result = dict(status=status, stop_reason=reason, device=model.device if model else device,
                     model=descriptor["model_id"], duration_seconds=round(time.monotonic() - started, 3),
                     libraries=list(stats.values()), totals=dict(files_indexed=indexed,
-                    vectors_added=vectors_added, failed=failed,
+                    vectors_added=vectors_added, failed=failed, not_reached=not_reached,
                     removed=sum(s["removed"] for s in stats.values())), failures_sample=failures,
                     index=dict(dir=str(index),
                     files=store.db.execute("SELECT COUNT(*) FROM files WHERE status='indexed'").fetchone()[0],

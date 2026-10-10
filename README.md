@@ -327,7 +327,11 @@ use `query_id,query`; see [invented queries](docs/examples/queries.csv).
 indexed, and `warnings`, `totals.failed`, and `failures_sample` report failures.
 Use `shotseek index --strict` for exit 8 when files fail, or
 `shotseek index --retry-failed --strict` to retry them. Storage and other fatal
-errors still have their own nonzero codes. Put command-specific flags such as
+errors still have their own nonzero codes. Files not reached because a folder
+became unavailable are counted separately in `totals.not_reached` and each
+library's `not_reached`, with a `files_not_reached` warning. Reconnect and rerun
+indexing normally; these files are not recorded as failed. The run still exits 4
+and preserves completed rows. Put command-specific flags such as
 `--device` after the subcommand: `shotseek search "a red mug" --device cpu`.
 
 `index --max-files-per-library N` caps newly indexed files separately for each
@@ -361,6 +365,12 @@ On macOS, OpenCV and PyAV wheels can emit duplicate AVFoundation class warnings
 (`AVFFrameReceiver` / `AVFAudioReceiver`). The tested CPU/MPS runs completed
 without a crash; this does not establish that every wheel combination is safe.
 See [platform setup](docs/platforms.md) if these warnings accompany a failure.
+
+## Known issues
+
+A few timing-based tests may flake on a heavily loaded machine. One unexplained,
+one-off Python 3.12 test-step failure during release verification did not
+reproduce in two clean runs.
 
 ## What has been verified
 

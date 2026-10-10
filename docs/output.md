@@ -89,7 +89,13 @@ those failures exit 8; `--retry-failed --strict` retries previously failed files
 an empty or short corrupt file); it does not measure image dimensions.
 `decode_failed` means a larger input could not be decoded, while `read_error`
 means the path could not be read. Inspect or replace the original input before
-retrying. Fatal storage/dependency errors retain the exit codes above.
+retrying. When the root itself becomes unavailable, discovered files that
+could not be reached count in `totals.not_reached` and each library's
+`not_reached`, not `failed` or `failures_sample`. The `files_not_reached` warning
+says they were not reached because the folder became unavailable. They do not
+create failed records or consume retry attempts; reconnect and rerun normally.
+`status.last_run.not_reached` retains the count. Files never discovered cannot
+be counted. Fatal storage/dependency errors retain the exit codes above.
 
 Stable errors: `usage`, `config_missing`, `config_invalid`, `config_exists`,
 `library_unknown`, `library_overlap`, `library_name_invalid`,
@@ -101,7 +107,7 @@ Stable errors: `usage`, `config_missing`, `config_invalid`, `config_exists`,
 `aroll_not_found`, `aroll_no_audio`, `transcript_unparseable`,
 `transcript_empty`, `no_speech_detected`, `files_failed`, `interrupted`, `internal`.
 
-Warnings: `index_incomplete`, `library_unreachable`, `prune_deferred`,
+Warnings: `files_not_reached`, `index_incomplete`, `library_unreachable`, `prune_deferred`,
 `query_truncated`, `config_model_differs`, `fake_embedder`,
 `whisper_cuda_unavailable`, `heic_support_missing`, `thumbnails_disabled`,
 `aroll_excluded`, `times_estimated`.

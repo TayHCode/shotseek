@@ -140,6 +140,9 @@
         },
         "files_per_minute": {
           "type": "number"
+        },
+        "not_reached": {
+          "type": "integer"
         }
       },
       "required": [
@@ -203,6 +206,9 @@
         },
         "walk_complete": {
           "type": "integer"
+        },
+        "not_reached": {
+          "type": "integer"
         }
       },
       "required": [
@@ -220,7 +226,8 @@
         "unchanged",
         "removed",
         "vectors_added",
-        "walk_complete"
+        "walk_complete",
+        "not_reached"
       ],
       "additionalProperties": false
     },

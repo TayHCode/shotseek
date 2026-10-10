@@ -11,7 +11,7 @@ class Docs(unittest.TestCase):
     def test_readme_sections_and_wording(self):
         text = (ROOT / "README.md").read_text()
         headings = re.findall(r"^## (.+)$", text, re.M)
-        self.assertEqual(headings, ["What you can ask for", "Requirements", "Quickstart (about ten minutes)", "Connect your agent", "B-roll for a talking-head video", "Using a GPU", "Where your media can live", "What it stores and what it never does", "Commands", "Limitations and not in this version", "What has been verified", "Related tools", "Third-party components and licenses", "License"])
+        self.assertEqual(headings, ["What you can ask for", "Requirements", "Quickstart (about ten minutes)", "Connect your agent", "B-roll for a talking-head video", "Using a GPU", "Where your media can live", "What it stores and what it never does", "Commands", "Limitations and not in this version", "Known issues", "What has been verified", "Related tools", "Third-party components and licenses", "License"])
         normalized = " ".join(text.split())
         self.assertIn("shotseek has been tested on a desktop with an NVIDIA RTX-class GPU.", normalized)
         self.assertIn("It runs on CPU by default and does not need a GPU; add `--device cuda` to use one.", normalized)

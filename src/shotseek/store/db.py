@@ -27,7 +27,7 @@ CREATE INDEX IF NOT EXISTS files_library ON files(library_id);
 CREATE TABLE IF NOT EXISTS runs(id INTEGER PRIMARY KEY, started_at TEXT, updated_at TEXT,
  finished_at TEXT, status TEXT, stop_reason TEXT, device TEXT, discovered INTEGER,
  processed INTEGER, indexed INTEGER, failed INTEGER, unchanged INTEGER, removed INTEGER,
- vectors_added INTEGER, walk_complete INTEGER);
+ vectors_added INTEGER, walk_complete INTEGER, not_reached INTEGER NOT NULL DEFAULT 0);
 """
 
 
@@ -63,6 +63,8 @@ class Store:
                     self.lock.__enter__()
                 self.db = sqlite3.connect(writable(self.index / "meta.sqlite", libraries), timeout=5)
                 self.db.executescript("PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL; PRAGMA busy_timeout=5000;" + SCHEMA)
+                if "not_reached" not in {row[1] for row in self.db.execute("PRAGMA table_info(runs)")}:
+                    self.db.execute("ALTER TABLE runs ADD COLUMN not_reached INTEGER NOT NULL DEFAULT 0")
                 if not self.kv():
                     if not model:
                         raise AppError("index_corrupt", "The index has no model descriptor.",
@@ -154,7 +156,7 @@ class Store:
 
     def update_run(self, run, values):
         allowed = {"status", "stop_reason", "finished_at", "discovered", "processed", "indexed",
-            "failed", "unchanged", "removed", "vectors_added", "walk_complete"}
+            "failed", "not_reached", "unchanged", "removed", "vectors_added", "walk_complete"}
         fields = {key: value for key, value in values.items() if key in allowed}
         fields["updated_at"] = now()
         self.db.execute("UPDATE runs SET " + ",".join(key + "=?" for key in fields) + " WHERE id=?",

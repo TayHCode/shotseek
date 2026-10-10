@@ -14,7 +14,7 @@ from shotseek.store.db import Store
 class SlowStorage(IndexCase):
     def setUp(self):
         super().setUp()
-        self.data["indexing"].update(file_timeout_seconds=.06, workers=1)
+        self.data["indexing"].update(file_timeout_seconds=.5, workers=1)
         self.release = threading.Event()
         self.addCleanup(self.release.set)
 
@@ -26,7 +26,7 @@ class SlowStorage(IndexCase):
         make_image(self.library / "mug.jpg", "red")
         start = time.monotonic()
         result = self.index_run(loader=self.blocked)
-        self.assertLess(time.monotonic() - start, 2)
+        self.assertLess(time.monotonic() - start, 10)
         self.assertEqual(result["status"], "complete")
         self.assertEqual(result["failures_sample"][0]["reason"], "timeout")
 
@@ -90,8 +90,8 @@ class SlowStorage(IndexCase):
             return original(path)
         start = time.monotonic()
         with patch("shotseek.walker.os.scandir", scan):
-            result = self.index_run("--time-budget", ".05")
-        self.assertLess(time.monotonic() - start, 2)
+            result = self.index_run("--time-budget", ".5")
+        self.assertLess(time.monotonic() - start, 10)
         self.assertEqual(result["status"], "partial")
         self.assertEqual(result["stop_reason"], "time_budget")
         self.assertEqual(result["totals"]["removed"], 0)

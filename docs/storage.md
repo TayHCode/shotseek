@@ -30,7 +30,11 @@ exit 4, including one missing folder alongside healthy folders. Roots are
 checked again after decoding, with at most five seconds per root; a folder that
 vanishes or becomes unreadable prevents completion and pruning. Search warns
 when a root cannot be confirmed readable: saved paths may be unavailable until
-it reconnects. A directory listing error under a reachable
+it reconnects. Discovered files not reached because the folder became unavailable
+are counted separately as `not_reached`, with a `files_not_reached` warning.
+They are not failed/read_error records; earlier searchable rows and retry
+counts are preserved. Reconnect and rerun normally without `--retry-failed`.
+Files the walk never discovered cannot be counted. A directory listing error under a reachable
 root also exits 4 with `library_unreachable`, even if no media was discovered;
 an incomplete walk must not report a successful completed run. Completed rows
 are retained, and pruning is skipped. A few bad files are recorded and skipped.
@@ -44,7 +48,8 @@ An unchanged re-index of an existing index loads no image model and reads no
 media. A retry of a failed file with no searchable rows counts as `new`; a
 previously successful file with changed metadata counts as `changed`.
 
-Filesystem errors while opening or reading a photo are `read_error`, including
+Filesystem errors while opening or reading a photo under a reachable root are
+`read_error`, including
 stale handles, I/O failures, timeouts, and permission denial. They retry
 automatically for up to three failed attempts; `--retry-failed` overrides that
 limit. Decoder failures remain separate. File and directory symlinks are skipped

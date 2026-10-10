@@ -59,7 +59,7 @@ class Indexing(IndexCase):
     def test_full_incremental_and_retry(self):
         make_library(self.library)
         first = self.index_run()
-        self.assertEqual(first["totals"], dict(files_indexed=9, vectors_added=10, failed=3, removed=0))
+        self.assertEqual(first["totals"], dict(files_indexed=9, vectors_added=10, failed=3, not_reached=0, removed=0))
         self.assertEqual(first["libraries"][0]["unsupported"], 1)
         def no_read(*unused):
             self.fail("Unchanged file was opened")

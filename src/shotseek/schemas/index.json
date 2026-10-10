@@ -112,6 +112,9 @@
           },
           "prune_deferred": {
             "type": "boolean"
+          },
+          "not_reached": {
+            "type": "integer"
           }
         },
         "required": [
@@ -127,7 +130,8 @@
           "failed",
           "unsupported",
           "removed",
-          "prune_deferred"
+          "prune_deferred",
+          "not_reached"
         ],
         "additionalProperties": false
       }
@@ -146,13 +150,17 @@
         },
         "removed": {
           "type": "integer"
+        },
+        "not_reached": {
+          "type": "integer"
         }
       },
       "required": [
         "files_indexed",
         "vectors_added",
         "failed",
-        "removed"
+        "removed",
+        "not_reached"
       ],
       "additionalProperties": false
     },
