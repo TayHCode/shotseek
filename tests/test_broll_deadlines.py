@@ -24,7 +24,7 @@ class BrollDeadlines(IndexCase):
         fixture.write_text(json.dumps([dict(start=0, end=6, text="Red ceramic mug on the cafe counter.")]))
         self.env[env("TRANSCRIBER")] = "fake:" + str(fixture)
         script = self.base / "stall.py"
-        # Same candidate-stat stall as the independent audit probe.
+
         script.write_text('''import sys,time
 from pathlib import Path
 from shotseek.cli import main
