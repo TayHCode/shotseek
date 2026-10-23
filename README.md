@@ -20,7 +20,10 @@ Python 3.11+ (3.12 was used for the platform checks), `ffmpeg` and `ffprobe`,
 and space for packages, model weights, package caches, and your index. Linux,
 Apple Silicon macOS, and native Windows have been tested with the qualifications
 below. Additional models need more space. See [platform setup](docs/platforms.md)
-for isolated Python installs, portable ffmpeg, and Windows setup.
+for isolated Python installs, portable ffmpeg, and Windows setup. Native Windows
+x64 also needs the Microsoft Visual C++ v14 Redistributable for the Python
+packages that load native libraries. Installing it may require administrator
+approval and a restart.
 
 shotseek has been tested on a desktop with an NVIDIA RTX-class GPU. It runs on CPU by default and does not need a GPU; add `--device cuda` to use one.
 
@@ -30,7 +33,9 @@ About ten minutes to a first search means searching a partial index. Package
 and model download time depends on the connection; a large or cloud-mounted
 library can take hours to finish indexing.
 
-1. Clone this repository, replacing the address placeholder:
+1. Without Git, use **Code → Download ZIP** on this repository, extract it, and
+   open a terminal in the extracted folder containing `pyproject.toml`. An
+   existing source archive works too. With Git, clone this repository:
    ```sh
    git clone <this repository's address> shotseek && cd shotseek
    ```
@@ -58,7 +63,9 @@ library can take hours to finish indexing.
    Reopen PowerShell so `uv` is on PATH, then return to the checkout. Alternatively,
    use the PowerShell installer in the current session:
    ```powershell
-   irm https://astral.sh/uv/install.ps1 | iex
+   New-Item -ItemType Directory -Force .scratch | Out-Null
+   Invoke-WebRequest -UseBasicParsing https://astral.sh/uv/install.ps1 -OutFile .scratch\install-uv.ps1
+   & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File .scratch\install-uv.ps1
    $env:PATH = "$env:USERPROFILE\.local\bin;$env:PATH"
    uv venv --python 3.12
    ```
@@ -68,7 +75,9 @@ library can take hours to finish indexing.
    Follow the printed location if you chose another install directory.
 
    After winget, also run `uv venv --python 3.12`. No venv activation or execution
-   policy change is needed on Windows. In subsequent commands replace `shotseek`
+   policy change is needed to run the venv executables. The installer above uses
+   Bypass only in its child process; it leaves the caller and persistent policies
+   unchanged. An enforced Group Policy can still block it. In subsequent commands replace `shotseek`
    with `& .\.venv\Scripts\shotseek.exe`.
 
    **Alternative without uv:** first run `python3 --version`; it must be **3.11+**.
@@ -106,10 +115,10 @@ library can take hours to finish indexing.
    ```
    Intel Macs need Intel builds from that page. A quarantined browser download
    may need approval for that individual file in macOS Privacy & Security.
-   On Windows, use [Gyan's portable essentials ZIP](https://www.gyan.dev/ffmpeg/builds/):
+   On Windows without winget, use [Gyan's portable essentials ZIP](https://www.gyan.dev/ffmpeg/builds/):
    ```powershell
    New-Item -ItemType Directory -Force .scratch | Out-Null
-   Invoke-WebRequest https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip -OutFile .scratch\ffmpeg.zip
+   Invoke-WebRequest -UseBasicParsing https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip -OutFile .scratch\ffmpeg.zip
    Expand-Archive .scratch\ffmpeg.zip -DestinationPath .scratch\ffmpeg
    $ffmpegBin = (Get-ChildItem .scratch\ffmpeg -Directory | Select-Object -First 1).FullName + '\bin'
    $env:PATH = "$ffmpegBin;$env:PATH"
@@ -119,7 +128,17 @@ library can take hours to finish indexing.
    ffmpeg -version
    ffprobe -version
    ```
-4. On Linux or Windows CPU installs, install PyTorch and torchvision together
+4. On Windows x64, install the Microsoft Visual C++ v14 Redistributable before
+   loading PyTorch or the speech runtime:
+   ```powershell
+   New-Item -ItemType Directory -Force .scratch | Out-Null
+   Invoke-WebRequest -UseBasicParsing https://aka.ms/vc14/vc_redist.x64.exe -OutFile .scratch\vc_redist.x64.exe
+   Start-Process .scratch\vc_redist.x64.exe -ArgumentList '/install' -Wait
+   ```
+   Complete the installer and restart if requested. Stop if installation fails;
+   reinstalling Python wheels does not install the Windows native runtime.
+
+   On Linux or Windows CPU installs, install PyTorch and torchvision together
    from the CPU wheel index. Both must use matching builds. **Skip this first
    command on macOS**; its PyPI wheels support CPU and Apple Silicon MPS.
    Windows CUDA users should use the matching CUDA pair in
@@ -139,6 +158,13 @@ library can take hours to finish indexing.
    python -m pip install .
    ```
    On macOS, skip the first command as above.
+   On Windows, check the native libraries before downloading model weights:
+   ```powershell
+   & .\.venv\Scripts\python.exe -c "import torch, torchvision, open_clip, faster_whisper; print(torch.ones(1).item())"
+   ```
+   Expect `1.0`. A DLL-loading error means the native runtime or matching wheels
+   still need attention. Continue only after the imports succeed.
+
 5. Check local requirements, including torchvision's CPU operators.
    A missing config is a warning at this stage. If ffmpeg or ffprobe is absent,
    JSON shows a `fail` check with detail `Missing` and hint

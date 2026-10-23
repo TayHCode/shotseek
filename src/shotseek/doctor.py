@@ -9,7 +9,7 @@ import subprocess
 import sys
 import tempfile
 from . import config
-from .embed.openclip import CPU_INSTALL_HINT, offline_mode, resolve_device
+from .embed.openclip import CPU_INSTALL_HINT, RUNTIME_INSTALL_HINT, offline_mode, resolve_device
 from .errors import AppError
 from .paths import filesystem_path, writable
 from .probe import bounded_probe
@@ -63,7 +63,7 @@ def inspect(args, imports=None, which=None, roots=None):
             add(ident, "ok", detail)
         except Exception:
             hint = CPU_INSTALL_HINT if ident in {"torch", "torchvision",
-                "open_clip"} else "Install the runtime dependencies."
+                "open_clip"} else RUNTIME_INSTALL_HINT
             add(ident, "warn" if ident == "heic" else "fail", "Missing or unusable package", hint)
     try:
         data, path, index = config.load(args, optional=True)
