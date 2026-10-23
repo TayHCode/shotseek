@@ -102,13 +102,28 @@ for indexing. The optional synthetic speech test additionally needs ffmpeg's
 
 The POSIX activation command in the README does not run in cmd or PowerShell.
 Install uv using the README quickstart. Use PowerShell and the virtual
-environment executables directly; no activation or execution-policy change
-is required:
+environment executables directly; no activation is required. The README uv
+installer uses a child process with `-ExecutionPolicy Bypass`, without changing
+the caller or persistent policy. Group Policy restrictions can still apply.
+
+On Windows x64, install Microsoft Visual C++ v14 before the Python packages.
+Download the official installer, complete it, and restart if requested:
+
+```powershell
+New-Item -ItemType Directory -Force .scratch | Out-Null
+Invoke-WebRequest -UseBasicParsing https://aka.ms/vc14/vc_redist.x64.exe -OutFile .scratch\vc_redist.x64.exe
+Start-Process .scratch\vc_redist.x64.exe -ArgumentList '/install' -Wait
+```
+
+Administrator approval may be required. If the installer fails, resolve that
+failure before continuing. Use the portable ffmpeg and ffprobe instructions
+above if winget is absent. Then install the matching CPU wheels:
 
 ```powershell
 uv venv --python 3.12
 uv pip install 'torch>=2.2' 'torchvision>=0.17' --index-url https://download.pytorch.org/whl/cpu
 uv pip install .
+& .\.venv\Scripts\python.exe -c "import torch, torchvision, open_clip, faster_whisper; print(torch.ones(1).item())"
 & .\.venv\Scripts\shotseek.exe doctor
 & .\.venv\Scripts\shotseek.exe init --library "media=C:\Media\Generated Photos"
 & .\.venv\Scripts\shotseek.exe index --time-budget 300

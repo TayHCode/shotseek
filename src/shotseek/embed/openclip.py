@@ -24,7 +24,8 @@ def offline_mode(offline=False):
     return enabled
 
 
-CPU_INSTALL_HINT = "Install torch and torchvision together with matching platform builds. Linux/Windows CPU: https://download.pytorch.org/whl/cpu; macOS: PyPI; NVIDIA CUDA: the PyTorch selector. See docs/platforms.md and the README quickstart."
+RUNTIME_INSTALL_HINT = "Install the runtime dependencies. On Windows, DLL load failures may require the Microsoft Visual C++ v14 Redistributable matching your Python architecture. See docs/platforms.md and the README quickstart."
+CPU_INSTALL_HINT = "Install torch and torchvision together with matching platform builds. Linux/Windows CPU: https://download.pytorch.org/whl/cpu; macOS: PyPI; NVIDIA CUDA: the PyTorch selector. " + RUNTIME_INSTALL_HINT
 
 
 def dependency(name):
@@ -32,7 +33,7 @@ def dependency(name):
         return importlib.import_module(name)
     except Exception:
         hint = CPU_INSTALL_HINT if name in {"torch", "torchvision",
-            "open_clip"} else "Install the runtime dependencies."
+            "open_clip"} else RUNTIME_INSTALL_HINT
         raise AppError("dependency_missing", "A required package is missing or unusable: " + name,
             hint, 6) from None
 
