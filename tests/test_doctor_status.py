@@ -67,6 +67,26 @@ STUBS = dict(imports=_imports, which=lambda n: n, roots=lambda p: True)
 
 
 class PlatformReport(IndexCase):
+    def test_native_dependency_failure_has_guidance_in_json_and_report(self):
+        from shotseek.doctor import command
+
+        def imports(name):
+            if name in {"torch", "torchvision", "open_clip", "faster_whisper"}:
+                raise OSError("DLL load failed")
+            return _imports(name)
+
+        for mode in ([], ["--report"]):
+            args = build_parser().parse_args(["doctor", "--offline", *mode])
+            result = command(args, imports=imports, which=lambda n: n, roots=lambda p: True)
+            self.assertFalse(result["ok"])
+            self.assertEqual(result["_exit"], 6)
+            for name in ("torch", "torchvision", "open_clip", "faster_whisper"):
+                check = next(c for c in result["checks"] if c["id"] == name)
+                self.assertEqual(check["status"], "fail")
+                self.assertIn("Visual C++", check["hint"])
+                if mode:
+                    self.assertIn(check["hint"], result["_raw"])
+
     def test_sample_uses_configured_image_device(self):
         import json
         from shotseek.config import write

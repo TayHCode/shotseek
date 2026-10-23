@@ -99,6 +99,17 @@ class Backends(unittest.TestCase):
         self.assertEqual(error.exception.exit_code, 6)
         self.assertIn("torch and torchvision together", error.exception.hint)
 
+    def test_native_dependency_failure_names_windows_runtime(self):
+        for name in ("torch", "torchvision", "open_clip", "faster_whisper"):
+            with self.subTest(name=name), patch(
+                "shotseek.embed.openclip.importlib.import_module", side_effect=OSError("DLL load failed")
+            ):
+                with self.assertRaises(AppError) as error:
+                    dependency(name)
+                self.assertEqual(error.exception.code, "dependency_missing")
+                self.assertEqual(error.exception.exit_code, 6)
+                self.assertIn("Visual C++", error.exception.hint)
+
     def test_speech_cuda_fallback(self):
         calls = []
         def create(model, **kwargs):
